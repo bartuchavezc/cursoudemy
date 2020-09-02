@@ -10,13 +10,11 @@ import { AuthModule } from './auth/auth.module';
 //  COMPONENTS
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppComponent } from './app.component';
-import { AuthRoutingModule } from './auth/auth.routing';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

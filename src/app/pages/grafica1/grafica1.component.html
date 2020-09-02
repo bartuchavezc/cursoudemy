@@ -1,1 +1,25 @@
-<p>grafica1 works!</p>
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <app-doughnut
+            [title]="'Sales'"
+            [labels]="labels1"
+            [data]="chartData1"
+            ></app-doughnut>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <app-doughnut
+        [title]="'Other'"
+        [labels]="labels2"
+        [data]="chartData2"
+        ></app-doughnut>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <app-doughnut></app-doughnut>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <app-doughnut></app-doughnut>
+    </div>
+</div>
