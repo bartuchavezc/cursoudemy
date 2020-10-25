@@ -1,28 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-//  MODULES
+// Modulos
 import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
-import { PagesRoutingModule } from './pages/pages.routing';
 import { AuthModule } from './auth/auth.module';
 
-//  COMPONENTS
-import { NotFoundComponent } from './not-found/not-found.component';
 import { AppComponent } from './app.component';
+import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
+    NopagefoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    AuthModule,
+    AuthModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

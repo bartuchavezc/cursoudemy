@@ -1,38 +1,45 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class SettingsService {
-  private linkTheme = document.querySelector("#theme");
+
+  private linkTheme = document.querySelector('#theme');
 
   constructor() {
-    const url =
-      localStorage.getItem("theme") || "./assets/css/colors/purple-dark.css";
-    this.linkTheme.setAttribute("href", url);
+    
+    const url = localStorage.getItem('theme') || './assets/css/colors/purple-dark.css';
+    this.linkTheme.setAttribute('href', url);
+
   }
 
-  changeTheme(theme: string) {
-    const url = `./assets/css/colors/${theme}.css`;
+  changeTheme( theme: string ) {
+  
+    const url = `./assets/css/colors/${ theme }.css`;
+    this.linkTheme.setAttribute('href', url);
+    localStorage.setItem('theme', url );
 
-    this.linkTheme.setAttribute("href", url);
-    localStorage.setItem("theme", url);
     this.checkCurrentTheme();
   }
 
-  checkCurrentTheme(): void {
-    const links = document.querySelectorAll(".selector");
+  checkCurrentTheme() {
 
-    links.forEach((elem) => {
-      elem.removeAttribute(".working");
+    const links = document.querySelectorAll('.selector');
 
-      const btnTheme = elem.getAttribute("data-theme");
-      const btmThemeUrl = `./assets/css/colors/${btnTheme}.css`;
-      const currentTheme = this.linkTheme.getAttribute("href");
+    links.forEach( elem => {
 
-      if (btmThemeUrl === currentTheme) {
-        elem.classList.add("working");
+      elem.classList.remove('working');
+      const btnTheme = elem.getAttribute('data-theme');
+      const btnThemeUrl = `./assets/css/colors/${ btnTheme }.css`;
+      const currentTheme = this.linkTheme.getAttribute('href');
+
+      if ( btnThemeUrl === currentTheme ) {
+        elem.classList.add('working');
       }
+
     });
+
   }
+
 }

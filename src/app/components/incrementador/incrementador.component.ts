@@ -1,56 +1,52 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-incrementador',
   templateUrl: './incrementador.component.html',
-  styles: []
+  styles: [
+  ]
 })
 export class IncrementadorComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit() {
-    this.btnClass = `btn ${this.btnClass}`;
+    this.btnClass = `btn ${ this.btnClass }`;
   }
 
-  @Input('valor') progress: number = 40;
+  @Input('valor') progreso: number = 40;
   @Input() btnClass: string = 'btn-primary';
+
 
   @Output('valor') valorSalida: EventEmitter<number> = new EventEmitter();
 
-  get getPorcentaje() {
-    return `${this.progress}%`;
-  }
+  cambiarValor( valor: number ) {
 
-  changeValue(value: number) {
-
-    if (this.progress >= 100 && value >= 0) {
+    if ( this.progreso >= 100 && valor >= 0 ) {
       this.valorSalida.emit(100);
-      return this.progress = 100;
+      return this.progreso = 100;
     }
 
-    if (this.progress <= 0 && value < 0) {
-      this.progress = 0;
+    if ( this.progreso <= 0 && valor < 0 ) {
       this.valorSalida.emit(0);
-      return;
+      return this.progreso = 0;
     }
 
-    this.progress = this.progress + value;
-    this.valorSalida.emit(this.progress);
+    this.progreso = this.progreso + valor;
+    this.valorSalida.emit( this.progreso );
   }
 
-  onChange(value: number) {
-
-    if (value >= 100) {
-      this.progress = 100;
-    } else if (value <= 0) {
-      this.progress = 0;
+  onChange( nuevoValor: number ){
+    
+    if( nuevoValor >= 100 ) {
+      this.progreso = 100;
+    } else if ( nuevoValor <= 0 ) {
+      this.progreso = 0;
     } else {
-      this.progress = value;
+      this.progreso = nuevoValor;
     }
 
-    this.valorSalida.emit(this.progress);
-  }
+    
 
+    this.valorSalida.emit( this.progreso );
+  }
 
 }
